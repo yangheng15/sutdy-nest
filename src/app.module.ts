@@ -8,11 +8,13 @@ import { DemoMiddleware } from './demo/middleware/demo.middleware';
 import { PostController } from './demo/post/post.controller';
 import { PostService } from './demo/service/post.service';
 import { TestModule } from './modules/test/test.module';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     TestModule,
+    UserModule,
   ],
   controllers: [AppController, CatsController, PostController],
   providers: [AppService, PostService],
