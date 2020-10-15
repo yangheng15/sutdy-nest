@@ -9,12 +9,14 @@ import { PostController } from './demo/post/post.controller';
 import { PostService } from './demo/service/post.service';
 import { TestModule } from './modules/test/test.module';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     TestModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController, CatsController, PostController],
   providers: [AppService, PostService],

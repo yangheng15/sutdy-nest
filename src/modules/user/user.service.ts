@@ -53,16 +53,20 @@ export class UserService {
     async updatePassword(username: string, data: UpdatePasswordDto) {
         const { password, newPassword } = data;
         const entity = await this.userRepository.findOne({ username })
-        if(!entity) {
+        if (!entity) {
             throw new NotFoundException('当前用户不存在')
         }
 
         const pass = await entity.comparePassword(password)
-        if(!pass) {
+        if (!pass) {
             throw new BadRequestException('密码验证失败')
         }
 
         entity.password = newPassword;
         return await this.userRepository.save(entity);
+    }
+
+    async findByUsername(username: string) {
+        return this.userRepository.findOne({ username })
     }
 }
